@@ -1,0 +1,16 @@
+Feature,Mean_Absolute_SHAP
+age_years,0.6400289229213175
+moderate_work_activity,0.23494956096636146
+moderate_leisure_activity,0.19508393590004833
+alcohol_past_12_months,0.16698891969594978
+bmi_kg_m2,0.09159712048372069
+fruit_servings_per_day,0.0903671252280925
+vegetable_servings_per_day,0.07649287987004802
+sex_male,0.0626288095032144
+vigorous_leisure_activity,0.05147604320944183
+active_transport,0.033973587612534516
+mean_diastolic_bp_mmhg,0.032969211486694835
+waist_cm,0.020943661330081208
+current_smoking,0.012655392423794518
+vigorous_work_activity,0.005769151501890278
+mean_systolic_bp_mmhg,0.004541748827531952
