@@ -1,7 +1,9 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: "http://127.0.0.1:8000/api/v1",
+    baseURL:
+        import.meta.env.VITE_API_URL ||
+        "http://127.0.0.1:8000/api/v1",
 });
 
 export const loginUser = async (username, password) => {
@@ -15,7 +17,8 @@ export const loginUser = async (username, password) => {
         formData,
         {
             headers: {
-                "Content-Type": "application/x-www-form-urlencoded",
+                "Content-Type":
+                    "application/x-www-form-urlencoded",
             },
         }
     );
@@ -24,13 +27,15 @@ export const loginUser = async (username, password) => {
 };
 
 export const getCurrentUser = async () => {
-    const token = localStorage.getItem("access_token");
+    const token =
+        localStorage.getItem("access_token");
 
     const response = await api.get(
         "/auth/me",
         {
             headers: {
-                Authorization: `Bearer ${token}`,
+                Authorization:
+                    `Bearer ${token}`,
             },
         }
     );
@@ -38,7 +43,6 @@ export const getCurrentUser = async () => {
     return response.data;
 };
 
-export default api;
 export const registerUser = async (userData) => {
     const response = await api.post(
         "/auth/register",
@@ -47,3 +51,5 @@ export const registerUser = async (userData) => {
 
     return response.data;
 };
+
+export default api;

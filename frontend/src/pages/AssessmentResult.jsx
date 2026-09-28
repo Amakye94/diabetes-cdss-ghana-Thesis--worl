@@ -280,7 +280,7 @@ function AssessmentResult() {
                         <div>
 
                             <p className="result-label">
-                                MODEL PREDICTION
+                                MODEL OUTPUT
                             </p>
 
                             <h2>
@@ -300,22 +300,29 @@ function AssessmentResult() {
 
                         <div className="prediction-score">
 
-                            <span>
-                                Model Prediction Score
-                            </span>
+                           <span>
+                                  Model Output Score
+                           </span>
 
-                            <strong>
-                                {percentage}%
-                            </strong>
+                           <strong>
+                           {percentage}%
+                           </strong>
 
-                            <small>
-                                Threshold:{" "}
-                                {(
-                                    prediction?.threshold *
-                                    100
-                                ).toFixed(0)}
-                                %
-                            </small>
+                        <small>
+    Decision Threshold:{" "}
+    {(
+        prediction?.threshold *
+        100
+    ).toFixed(0)}
+    %
+                    </small>
+
+                    <p className="score-explanation">
+                          This score represents the output of the trained
+                          machine learning model. It is not a calibrated
+                          clinical probability and does not constitute a
+                          diagnosis.
+                    </p>
 
                         </div>
 
@@ -371,7 +378,7 @@ function AssessmentResult() {
                     <div className="section-title">
 
                         <h2>
-                            Why This Prediction?
+                            Why Did the Model Produce This Output?
                         </h2>
 
                         <p>

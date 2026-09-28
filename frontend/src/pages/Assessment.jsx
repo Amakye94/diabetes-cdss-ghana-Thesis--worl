@@ -166,6 +166,9 @@ function Assessment() {
         patient?.date_of_birth
     );
 
+    const ageOutsideModelRange =
+        age !== "" && (age < 25 || age > 64);
+
     const handleSubmit = async (event) => {
         event.preventDefault();
 
@@ -486,6 +489,54 @@ function Assessment() {
                     </div>
 
                 </section>
+
+
+                {ageOutsideModelRange && (
+                    <div
+                        className="form-warning"
+                        style={{
+                            display: "flex",
+                            gap: "14px",
+                            alignItems: "flex-start",
+                            padding: "16px 18px",
+                            marginBottom: "20px",
+                            border: "1px solid #e6b85c",
+                            borderRadius: "10px",
+                            backgroundColor: "#fff8e7",
+                            color: "#6b4f00"
+                        }}
+                    >
+                        <div
+                            style={{
+                                width: "28px",
+                                height: "28px",
+                                minWidth: "28px",
+                                borderRadius: "50%",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                fontWeight: "700",
+                                backgroundColor: "#e6b85c",
+                                color: "#ffffff"
+                            }}
+                        >
+                            !
+                        </div>
+
+                        <div>
+                            <strong>Model Applicability Notice</strong>
+
+                            <p style={{ margin: "6px 0 0", lineHeight: "1.6" }}>
+                                This patient's age is outside the 25–64 year
+                                age range represented in the dataset used to
+                                develop this model. The assessment can still
+                                be completed, but the model output should be
+                                interpreted with additional caution and should
+                                not be considered validated for this age group.
+                            </p>
+                        </div>
+                    </div>
+                )}
 
 
                 {error && (
@@ -1186,6 +1237,180 @@ function Assessment() {
 
                             </div>
 
+                        </div>
+
+                    </section>
+
+
+                    {/* REVIEW ASSESSMENT */}
+
+                    <section className="assessment-section">
+
+                        <div className="assessment-section-header">
+
+                            <div className="section-number">
+                                6
+                            </div>
+
+                            <div>
+                                <h2>
+                                    Review Assessment
+                                </h2>
+
+                                <p>
+                                    Review the calculated clinical values
+                                    before running the AI assessment.
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div className="form-grid">
+
+                            <div className="clinical-form-group">
+                                <label>Age</label>
+                                <input
+                                    type="text"
+                                    value={
+                                        age !== ""
+                                            ? `${age} years`
+                                            : "Not available"
+                                    }
+                                    readOnly
+                                />
+                            </div>
+
+                            <div className="clinical-form-group">
+                                <label>BMI</label>
+                                <input
+                                    type="text"
+                                    value={
+                                        bmi
+                                            ? `${bmi} kg/m²`
+                                            : "Not available"
+                                    }
+                                    readOnly
+                                />
+                            </div>
+
+                            <div className="clinical-form-group">
+                                <label>Waist Circumference</label>
+                                <input
+                                    type="text"
+                                    value={
+                                        formData.waist_cm
+                                            ? `${formData.waist_cm} cm`
+                                            : "Not available"
+                                    }
+                                    readOnly
+                                />
+                            </div>
+
+                            <div className="clinical-form-group">
+                                <label>Mean Systolic BP</label>
+                                <input
+                                    type="text"
+                                    value={
+                                        meanSystolic
+                                            ? `${meanSystolic} mmHg`
+                                            : "Not available"
+                                    }
+                                    readOnly
+                                />
+                            </div>
+
+                            <div className="clinical-form-group">
+                                <label>Mean Diastolic BP</label>
+                                <input
+                                    type="text"
+                                    value={
+                                        meanDiastolic
+                                            ? `${meanDiastolic} mmHg`
+                                            : "Not available"
+                                    }
+                                    readOnly
+                                />
+                            </div>
+
+                            <div className="clinical-form-group">
+                                <label>Smoking</label>
+                                <input
+                                    type="text"
+                                    value={
+                                        formData.current_smoking === "1"
+                                            ? "Yes"
+                                            : formData.current_smoking === "0"
+                                                ? "No"
+                                                : "Not selected"
+                                    }
+                                    readOnly
+                                />
+                            </div>
+
+                            <div className="clinical-form-group">
+                                <label>Alcohol in Past 12 Months</label>
+                                <input
+                                    type="text"
+                                    value={
+                                        formData.alcohol_past_12_months === "1"
+                                            ? "Yes"
+                                            : formData.alcohol_past_12_months === "0"
+                                                ? "No"
+                                                : "Not selected"
+                                    }
+                                    readOnly
+                                />
+                            </div>
+
+                            <div className="clinical-form-group">
+                                <label>Fruit Servings per Day</label>
+                                <input
+                                    type="text"
+                                    value={
+                                        formData.fruit_servings_per_day !== ""
+                                            ? formData.fruit_servings_per_day
+                                            : "Not available"
+                                    }
+                                    readOnly
+                                />
+                            </div>
+
+                            <div className="clinical-form-group">
+                                <label>Vegetable Servings per Day</label>
+                                <input
+                                    type="text"
+                                    value={
+                                        formData.vegetable_servings_per_day !== ""
+                                            ? formData.vegetable_servings_per_day
+                                            : "Not available"
+                                    }
+                                    readOnly
+                                />
+                            </div>
+
+                        </div>
+
+                        <div
+                            className="clinical-support-notice"
+                            style={{
+                                marginTop: "20px",
+                                padding: "16px 18px",
+                                borderRadius: "10px",
+                                backgroundColor: "#f4f8fb",
+                                border: "1px solid #d8e3ec"
+                            }}
+                        >
+                            <strong>Clinical Decision Support Notice</strong>
+
+                            <p style={{ margin: "7px 0 0", lineHeight: "1.6" }}>
+                                This assessment uses an artificial intelligence
+                                model to provide risk-support information based
+                                on the patient's recorded characteristics and
+                                measurements. The model output is intended to
+                                support, not replace, clinical judgement. It is
+                                not a diagnosis and should not be used as the
+                                sole basis for clinical decisions.
+                            </p>
                         </div>
 
                     </section>
