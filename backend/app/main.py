@@ -39,6 +39,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",
+        "https://diabetes-cdss-ghana-thesis-worl-3.onrender.com",
     ],
     allow_credentials=True,
     allow_methods=["*"],
